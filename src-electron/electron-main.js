@@ -1,6 +1,7 @@
-import { app, BrowserWindow, nativeTheme } from "electron";
+import { app, BrowserWindow, nativeTheme, ipcMain } from "electron";
 import path from "path";
 import os from "os";
+import Notification from "../src-electron/modules/Notification";
 
 // needed in case process is undefined under Linux
 const platform = process.platform || os.platform();
@@ -35,6 +36,10 @@ function createWindow() {
     },
   });
 
+  ipcMain.on("call-message", () => {
+    Notification.notify();
+  });
+
   mainWindow.loadURL(process.env.APP_URL);
 
   if (process.env.DEBUGGING) {
@@ -65,4 +70,5 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
 export default getMainWindow;

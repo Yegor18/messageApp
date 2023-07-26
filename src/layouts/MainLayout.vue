@@ -30,7 +30,6 @@
 
     <q-page-container>
       <router-view></router-view>
-      <NotificationPlaceholder />
     </q-page-container>
 
     <q-footer elevated class="bg-grey-8 text-white">
@@ -48,7 +47,12 @@
 
 <script setup>
 import { ref } from "vue";
-import NotificationPlaceholder from "src/components/NotificationPlaceholder.vue";
+import { useQuasar } from "quasar";
+
+window.messageAPI.onShowMessage((options) => {
+  const $q = useQuasar();
+  $q.notify(options);
+});
 
 const leftDrawerOpen = ref(false);
 const rightDrawerOpen = ref(false);

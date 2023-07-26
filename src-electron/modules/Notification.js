@@ -1,13 +1,28 @@
 import getMainWindow from "../electron-main";
+import { useQuasar } from "quasar";
 class sigletonNotification {
-  notify(options) {
+  notify(
+    options = {
+      template: "success",
+      message: "Задание завершено",
+      type: "positive",
+    }
+  ) {
     const mainWindow = getMainWindow();
     if (mainWindow) {
-      mainWindow.webContents.send("show-message", {
-        template: "success",
-        message: "Задание завершено",
-        type: "positive",
-      });
+      //работа с бд
+      let optionsFromBD = {
+        message: "Completed",
+        caption: "Message",
+        type: "eeel",
+        icon: null,
+        position: "left",
+      };
+
+      mainWindow.webContents.send(
+        "show-message",
+        Object.assign(optionsFromBD, options)
+      );
     }
   }
 }

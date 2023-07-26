@@ -4,4 +4,7 @@
   </q-page>
 </template>
 
-<script setup></script>
+<script setup>
+window.messageAPI.callMessage();
+console.log("send message");
+</script>
