@@ -4,7 +4,7 @@ class EquipmentManager {
   showMessage() {
     Notification.notify({
       template: "error",
-      message: "Задание завершено/ equipment ",
+      message: "Задание  завершено/ equipment ",
       type: "warning",
       // caption: null,
       // position: "top-right",
