@@ -30,6 +30,7 @@
 
     <q-page-container>
       <router-view></router-view>
+      <Notification></Notification>
     </q-page-container>
 
     <q-footer elevated class="bg-grey-8 text-white">
@@ -48,11 +49,7 @@
 <script setup>
 import { ref } from "vue";
 import { useQuasar } from "quasar";
-
-window.messageAPI.onShowMessage((options) => {
-  const $q = useQuasar();
-  $q.notify(options);
-});
+import Notification from "src/components/Notification.vue";
 
 const leftDrawerOpen = ref(false);
 const rightDrawerOpen = ref(false);

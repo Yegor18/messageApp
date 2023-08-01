@@ -2,7 +2,7 @@ import { app, BrowserWindow, nativeTheme, ipcMain } from "electron";
 import path from "path";
 import os from "os";
 import Notification from "../src-electron/modules/Notification";
-
+import EquipmentManager from "./modules/equipmentManager";
 // needed in case process is undefined under Linux
 const platform = process.platform || os.platform();
 
@@ -36,8 +36,24 @@ function createWindow() {
     },
   });
 
-  ipcMain.on("call-message", () => {
-    Notification.notify();
+  ipcMain.on("call-message", async () => {
+    console.log("call message in electron main ");
+    Notification.notify({
+      template: "success",
+      // message: "Задание завершено ",
+      // type: "warning",
+      caption: null,
+      position: "top-right",
+      icon: null,
+    });
+    Notification.notify({
+      template: "error",
+      // message: "Задание завершено ",
+      // type: "warning",
+      // caption: null,
+      // position: "top-right",
+      icon: null,
+    });
   });
 
   mainWindow.loadURL(process.env.APP_URL);
@@ -57,7 +73,15 @@ function createWindow() {
   });
 }
 
-app.whenReady().then(createWindow);
+app
+  .whenReady()
+  .then(createWindow)
+  .then(() => {
+    setTimeout(() => {
+      let a = new EquipmentManager();
+      a.showMessage();
+    }, 2000);
+  });
 
 app.on("window-all-closed", () => {
   if (platform !== "darwin") {

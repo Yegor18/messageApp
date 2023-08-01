@@ -28,8 +28,5 @@
  * }
  */
 const { contextBridge, ipcRenderer } = require("electron");
-
-contextBridge.exposeInMainWorld("messageAPI", {
-  onShowMessage: (callback) => ipcRenderer.on("show-message", callback),
-  callMessage: () => ipcRenderer.send("call-message"),
-});
+const { default: messageExposer } = require("./modules/messageExposer");
+contextBridge.exposeInMainWorld("messageAPI", messageExposer);

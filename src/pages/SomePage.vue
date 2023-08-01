@@ -6,5 +6,4 @@
 
 <script setup>
 window.messageAPI.callMessage();
-console.log("send message");
 </script>
