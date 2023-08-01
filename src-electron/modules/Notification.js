@@ -18,9 +18,6 @@ class Notification {
       let optionsFromDB = {};
       if (options.template)
         optionsFromDB = await this.getOptionsFromDB(options.template);
-      console.log("Options from db  ", optionsFromDB);
-      //работа с бд
-      console.log("Send show message  ", Object.assign(optionsFromDB, options));
       mainWindow.webContents.send(
         "show-message",
         Object.assign(optionsFromDB, options)
@@ -65,8 +62,6 @@ class Notification {
         tableName: "Notifications",
       }
     );
-
-    console.log(notification === sequelize.models.Notification);
     try {
       let queryResult = await notification.findAll({
         attributes: [
@@ -81,7 +76,6 @@ class Notification {
           template: template,
         },
       });
-      console.log("All messages:", JSON.stringify(queryResult, null, 2));
       return queryResult[0] ? queryResult[0].dataValues : {};
     } catch (error) {
       console.error("Wrong params in the database:  ", error);

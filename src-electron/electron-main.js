@@ -37,7 +37,6 @@ function createWindow() {
   });
 
   ipcMain.on("call-message", async () => {
-    console.log("call message in electron main ");
     Notification.notify({
       template: "success",
       // message: "Задание завершено ",
