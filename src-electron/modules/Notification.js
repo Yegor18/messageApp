@@ -13,6 +13,7 @@ class Notification {
   }
 
   async notify(options) {
+    //получаем объект mainWindow с помощью специально написанной функции
     const mainWindow = getMainWindow();
     if (mainWindow) {
       let optionsFromDB = {};
@@ -24,6 +25,7 @@ class Notification {
       );
     }
   }
+
   async getOptionsFromDB(template) {
     const sequelize = new Sequelize(
       "postgres://postgres:postgres@localhost:5445/EN_list_notifications"

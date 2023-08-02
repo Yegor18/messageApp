@@ -76,6 +76,7 @@ app
   .whenReady()
   .then(createWindow)
   .then(() => {
+    //после создания приложения через 2 секунды вызовется метод notify
     setTimeout(() => {
       let a = new EquipmentManager();
       a.showMessage();

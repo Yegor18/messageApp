@@ -4,4 +4,6 @@
   </q-page>
 </template>
 
-<script setup></script>
+<script setup>
+//страница в главном меню приложения
+</script>

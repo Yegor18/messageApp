@@ -5,5 +5,6 @@
 </template>
 
 <script setup>
+//при переходе на эту страницу вызывается метод на бэке
 window.messageAPI.callMessage();
 </script>

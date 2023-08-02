@@ -15,6 +15,8 @@ window.messageAPI.onShowMessage(async (event, options) => {
     timeout: 1000,
   };
   $q.notify.setDefaults(defaultOptions);
+  //Если notify метод вернул false, значит переданы неверные параметры и уведомление не отобразится.
+  //В этом случае отправляю опции по дефолту
   let isOptionsValid = $q.notify(options);
   if (!isOptionsValid) $q.notify(defaultOptions);
 });

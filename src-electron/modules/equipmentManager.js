@@ -1,4 +1,5 @@
 import Notification from "./Notification";
+//просто класс для отладки и дебага
 class EquipmentManager {
   constructor() {}
   showMessage() {
